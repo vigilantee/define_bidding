@@ -1,0 +1,93 @@
+{% extends "front/partials/layout.njk" %}
+{% block content %}
+<section class="content_section">
+    <div class="heading_main">
+        <div class="container_section">
+            <h2>Farmer's Registration Form</h2>
+            <ul>
+                <li><a href="{{config.baseUrl}}">Home</a></li>
+                <li>/ Farmer's Registration Form</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="get_in_touch">
+        <div class="container_section">
+            <div class="trade_register">
+                <h3>Farmer's Registration Form</h3>
+                <form action="{{config.baseUrl}}{{action}}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+                    <div class="trade_full">
+                        <label>Name Of Farmer</label><code>*</code>
+                        <input class="trade_input" type="text" name="fname" placeholder="Farmer Name" value="" required/>
+                    </div>
+                    <div class="trade_full">
+                        <label>Full Address</label><code>*</code>
+                        <textarea class="trade_input trade_message" id="" name="address" rows="4" cols="50" placeholder="Full Address" required></textarea>
+                    </div>
+                    <div class="trade_full">
+                        <label>Pincode</label><code>*</code>
+                        <input class="trade_input" type="text" name="pincode" placeholder="Pincode" value="" minlength="6" maxlength="6" required/>
+                    </div>
+                    <div class="trade_full">
+                        <label>Contact Number</label><code>*</code>
+                        <input class="trade_input" type="text" name="mobile" placeholder="Mobile Number" value="" minlength="10" maxlength="10" pattern="[6-9]{1}[0-9]{9}" required/>
+                    </div>
+                    <div class="trade_full">
+                        <label>Email Address</label><code>*</code>
+                        <input class="trade_input" type="email" name="email" placeholder="Email Address" value="" required/>
+                    </div>
+                    <div class="trade_full">
+                        <label>Bank Account Number</label><code>*</code>
+                        <input class="trade_input" type="text" name="ac_no" placeholder="Bank Account Number" value="" required/>
+                    </div>
+                    <div class="trade_full">
+                        <label>IFSC</label><code>*</code>
+                        <input class="trade_input" type="text" name="ifsc" placeholder="IFSC Code" value="" required/>
+                    </div>
+                    <div class="trade_full">
+                        <label>Branch</label><code>*</code>
+                        <input class="trade_input" type="text" name="branch" placeholder="Branch Name" value="" required/>
+                    </div>
+                    <div class="trade_full">
+                        <label>Aadhaar Card Number</label><code>*</code>
+                        <input class="trade_input" type="text" name="adhno" placeholder="Aadhaar Number" value="" required/>
+                    </div>
+                    <div class="trade_full">
+                        <label>PAN number</label>
+                        <input class="trade_input" type="text" name="panno" placeholder="PAN Number (Optional)" value="" />
+                    </div>
+                    <div class="trade_full">
+                        <label>UserId</label><code>*</code>
+                        <input class="trade_input" type="text" name="userId" placeholder="User Id" value="" required/>
+                    </div>
+                    <div class="trade_full">
+                        <label>Password</label><code>*</code>
+                        <input class="trade_input" type="password" name="pswd" placeholder="Password" value="" required/>
+                    </div>
+                    <h4>List of documents that need to be enclosed.</h4>
+                    <div class="trade_full">
+                        <label>PAN Card</label><code>&nbsp;</code>
+                        <input type="file"  name="panImg" accept="image/jpg,image/png,image/jpeg"/>
+                    </div>
+                    <div class="trade_full">
+                        <label>Aadhar Card</label>
+                        <input type="file"  name="adhImg" accept=".pdf">
+                    </div>
+                    <div class="trade_full">
+                        <label>Cancel Cheque/Bank Passbook Copy</label>
+                        <input type="file" name="chqImg" accept="image/jpg,image/png,image/jpeg"/>
+                    </div>
+                    <div class="trade_full">
+                        <label>7/12</label>
+                        <input type="file"  name="svn12Img" accept="image/jpg,image/png,image/jpeg"/>
+                    </div>
+                    <div class="input_full input_full_btn">
+                        <input class="submit_input" type="submit" value="Signup" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

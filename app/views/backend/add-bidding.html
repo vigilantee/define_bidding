@@ -1,0 +1,78 @@
+{% extends "backend/partials/layout.njk" %}
+{% block content %}
+<div class="main-content">
+    <section class="section">
+        <div class="section-body">
+            <div class="row">
+                <div class="col-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Add Bidding</h4>
+                        </div>
+                        <div class="card-body">
+                            <a href="{{config.baseUrl}}backend/show-bidding" class="btn btn-success pull-right" style="margin-bottom:1%"><i class="fa fa-eye"></i>&nbsp; Show Bidding</a>
+                            <form method="post" action="{{config.baseUrl}}{{action}}">
+                                <div class="form-group">
+                                    <label>Category</label><code>*</code>
+                                    <select class="form-control" name="category" required>
+                                        <option value="">---- Choose Category ----</option>
+                                        <option value="farmer">Farmer</option>
+                                        <option value="trader">Trader</option>
+                                        <option value="supplier">Supplier</option>
+                                        <option value="broker">Broker</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Unit Of Measurement (UOM)</label><code>*</code>
+                                    <input type="text" class="form-control" name="uom" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Bid Date</label><code>*</code>
+                                    <input type="date" class="form-control" name="bid_date" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Start Date</label><code>*</code>
+                                    <input type="date" class="form-control" name="start_date" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Start Time</label><code>*</code>
+                                    <input type="time" class="form-control" name="start_time" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>End Date</label><code>*</code>
+                                    <input type="date" class="form-control" name="end_date" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>End Time</label><code>*</code>
+                                    <input type="time" class="form-control" name="end_time" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Price</label><code>*</code>
+                                    <input type="text" class="form-control" name="price" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Product</label><code>*</code>
+                                    <select class="form-control" name="product" required>
+                                        <option value="">---- Choose Product ----</option>
+                                        <option value="seed">SEED</option>
+                                        <option value="product1">Product 1</option>
+                                        <option value="product2">Product 2</option>
+                                        <option value="product3">Product 3</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Quantity</label><code>*</code>
+                                    <input type="number" class="form-control" name="qty" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" class="btn btn-primary" name="btn">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

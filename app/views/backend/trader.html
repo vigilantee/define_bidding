@@ -1,0 +1,50 @@
+{% extends "backend/partials/layout.njk" %}
+{% block content %}
+<div class="main-content">
+    <section class="section">
+        <div class="section-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card"> 
+                        <div class="card-header">
+                            <h4>Trader Table</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-hover" id="tableExport" style="width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <th>Category</th>
+                                            <th>Registration Type</th>
+                                            <th>Name</th>
+                                            <th>Address</th>
+                                            <th>Contact</th>
+                                            <th>Email</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for tl in trader_list %}
+                                        <tr>
+                                            <td>{{'Customer' if tl.category==1 else 'Supplier/Vendor'}}</td>
+                                            <td></td>
+                                            <td>{{tl.name_firm_name}}</td>
+                                            <td>{{tl.trader_full_address}}</td>
+                                            <td>{{tl.trader_contact_no}}</td>
+                                            <td>{{tl.trader_email_id}}</td>
+                                            <td>{{'<a href="">Active</a>' if tl.trader_status else '<a href="">Deactive</a>'}}</td>
+                                            <td><a href="{{config.baseUrl}}backend/delete-trader/{{tl.id}}" onclick="return confirm('Are you sure? You want to delete')" class="btn btn-danger"><i class="fa fa-trash"></i>&nbsp;Delete</a></td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

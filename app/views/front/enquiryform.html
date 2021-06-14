@@ -1,0 +1,60 @@
+{% extends "front/partials/layout.njk" %}
+{% block content %}
+<section class="content_section">
+    <div class="heading_main">
+        <div class="container_section">
+            <h2>Enquiry Form</h2>
+            <ul>
+                <li><a href="{{config.baseUrl}}">Home</a></li>
+                <li>/ Enquiry Form</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="get_in_touch">
+        <div class="container_section">
+            <div class="form_get">
+                <form action="{{action}}" method="post" accept-charset="utf-8">
+                    <div class="input_half">
+                        <label>Business Interest</label> 
+                        <select class="get_input" name="business_interest" id="business_interest" required>
+                            <option value="">Select an option</option>
+                            <option value="farmer">Farmer</option>
+                            <option value="trader">Trader</option>
+                            <option value="broker">Broker</option>
+                        </select>
+                    </div>
+                    <div class="input_half">
+                        <label>Name</label> 
+                        <input class="get_input" type="text" name="uname" placeholder="Enter your name" value="" required>
+                    </div>
+                    <div class="input_half">
+                        <label>Your Email Address</label> 
+                        <input class="get_input" type="email" name="email" placeholder="Enter your Email Address" value="" required>
+                    </div>
+                    <div class="input_half">
+                        <label>Business Address</label> 
+                        <textarea class="get_input" name="add" placeholder="Enter your Business Address" value="" required></textarea>
+                    </div>
+                    <div class="input_half">
+                        <label>Your Reason Of Contact</label> 
+                        <select class="get_input" name="reason" id="reason" required>
+                            <option value="">Business</option>
+                            <option value="b2">Business 2</option>
+                            <option value="b3">Business 3</option>
+                            <option value="b4">Business 4</option>
+                        </select>
+                    </div>
+                    <div class="input_half">
+                        <label>Mobile Number</label> 
+                        <input class="get_input" type="text" name="mobile" placeholder="Enter your Mobile Number" value="" required pattern="[6-9]{1}[0-9]{9}">
+                    </div>
+                    <div class="input_full input_full_btn">	   
+                        <input class="submit_input" type="submit" value="Submit">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}   

@@ -1,0 +1,44 @@
+{% extends "backend/partials/layout.njk" %}
+{% block content %}
+<div class="main-content">
+    <section class="section">
+        <div class="section-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Contact Table</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-hover" id="tableExport" style="width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Message</th>
+                                            <th>Email</th>
+                                            <th>Reason</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for cl in contact_list %}
+                                        <tr>
+                                            <td>{{cl.fname}}&nbsp;{{cl.lname}}</td>
+                                            <td>{{cl.message}}</td>
+                                            <td>{{cl.email}}</td>
+                                            <td>{{cl.reason}}</td>
+                                            <td><a href="{{config.baseUrl}}backend/delete-contact/{{cl.id}}" onclick="return confirm('Are you sure?You want to delete')" class="btn btn-danger"><i class="fa fa-trash"></i>&nbsp;Delete</a></td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

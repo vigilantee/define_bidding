@@ -1,0 +1,55 @@
+{% extends "backend/partials/layout.njk" %}
+{% block content %}
+<div class="main-content">
+    <section class="section">
+        <div class="section-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Bidding Table</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-hover" id="tableExport" style="width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <th>Category</th>
+                                            <th>UOM</th>
+                                            <th>Bid Date</th>
+                                            <th>Start Date/Time</th>
+                                            <th>End Date/Time</th>
+                                            <th>Price</th>
+                                            <th>Product</th>
+                                            <th>Qty</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for bl in bid_list %}
+                                        <tr>
+                                            <td>{{bl.category}}</td>
+                                            <td>{{bl.uom}}</td>
+                                            <td>{{bl.bid_date}}</td>
+                                            <td>{{bl.start_date_time}}</td>
+                                            <td>{{bl.end_date_time}}</td>
+                                            <td>{{bl.price}}</td>
+                                            <td>{{bl.product}}</td>
+                                            <td>{{bl.qty}}</td>
+                                            <td>{{bl.status}}</td>
+                                            <td>Delete</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+{% endblock %}

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>{{alias}} :: TANIA INDUSTRIES</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="css/comman.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap" rel="stylesheet"> 
+<script>
+function myFunction(imgs) {
+  // Get the expanded image
+  var expandImg = document.getElementById("expandedImg");
+  // Get the image text
+  var imgText = document.getElementById("imgtext");
+  // Use the same src in the expanded image as the image being clicked on from the grid
+  expandImg.src = imgs.src;
+  // Use the value of the alt attribute of the clickable image as text inside the expanded image
+  imgText.innerHTML = imgs.alt;
+  // Show the container element (hidden with CSS)
+  expandImg.parentElement.style.display = "block";
+} 
+</script> 
+<style>code{color:red;}</style>
+</head>
+<body>
+<header class="header_main">
+<div class="container">
+	<div class="logo"><img src="images/logo.png" alt="" border="0"></div>
+    <div class="topnav" id="myTopnav">
+		<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+			<img src="images/mobile_icon.png" alt="" border="0">
+		</a>
+	<ul>
+		<li><a class="{% if alias=='HOME' %}active{% endif %}" href="{{config.baseUrl}}">Home</a></li>
+		<li><a class="{% if alias=='ABOUT US' %}active{% endif %}" href="{{config.baseUrl}}about-us">About</a></li>
+		<li><a class="has_children" href="#">Bidding</a>
+			<ul class="sub_menu">
+			   {% if (sessionData.userType=='Broker') %}
+			   <li><a href="{{config.baseUrl}}broker">Broker</a></li>
+			   {% elif (sessionData.userType=='Farmer') %}
+			   <li><a href="{{config.baseUrl}}farmer">Farmer</a></li>
+			   {% elif(sessionData.userType=='Trader') %}
+			   <li><a href="{{config.baseUrl}}trader">Trader</a></li>
+			   {% endif %}
+		    </ul>
+		</li>
+		<li><a class="{% if alias=='ENQUIRY FORM' %}active{% endif %}" href="{{config.baseUrl}}enquiry-form">Enquiry Form</a></li>
+		<li><a class="{% if alias=='CONTACT' %}active{% endif %}" href="{{config.baseUrl}}contact">Contact</a></li>
+    </ul>
+	</div>
+	<div class="sign_up">
+	   <ul>
+	       <li><a class="active has_children" href="#">{% if (sessionData === undefined) or (sessionData == '') %}Signup{% else %}{{sessionData.username}}{% endif %}</a>
+		       <ul class="sub_sign">
+			   {% if (sessionData === undefined) or (sessionData == '') %}
+			   <li><a href="{{config.baseUrl}}farmer-signup">Farmer</a></li>
+			   <li><a href="{{config.baseUrl}}broker-signup">Broker</a></li>
+			   <li><a href="{{config.baseUrl}}trader-signup">Trader</a></li>
+			   {% else %}
+			   <li><a href="{{config.baseUrl}}my-profile">My Profile</a></li>
+			   <li><a href="{{config.baseUrl}}bidding-panel">Bidding Panel</a></li>
+			   <li><a href="{{config.baseUrl}}logout">Logout</a></li>
+			   {% endif %}
+			   <li><a class="{% if alias=='TERMS AND CONDITIONS' %}active{% endif %}" href="{{config.baseUrl}}terms-and-condition">Terms & Conditions</a></li>
+		       </ul>
+		   </li>
+		   
+	       <li>{% if (sessionData === undefined) or (sessionData == '') %}<a href="{{config.baseUrl}}login">Login</a> {% else %} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {% endif %}</li>
+		   
+	   </ul>
+	    
+	</div>
+</div>
+</header>
+
+{% block content %}{% endblock %}
+<footer class="footer_main">
+<div class="container">
+    <div class="footer_box">
+	    <img src="images/logo.png" alt="" border="0">
+		<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.</p>	
+		<h5>Socials</h5>
+		<div class="social_icon">
+		<a href="#"><img src="images/icon1.png" alt="" border="0"></a>
+		<a href="#"><img src="images/icon2.png" alt="" border="0"></a>
+		<a href="#"><img src="images/icon3.png" alt="" border="0"></a>
+		</div>		
+	</div>
+	<div class="footer_box">
+		<h5>Pages</h5>	
+		<ul>
+			<li><a href="{{config.baseUrl}}about-us">About</a></li>
+			<li><a href="#">Blog</a></li>
+			<li><a href="{{config.baseUrl}}contact">Contact</a></li>
+		<ul>
+	</div>
+	<div class="footer_box">
+		<h5>Bidding</h5>	
+		<ul>
+			<li><a href="#">Farmer</a></li>
+			<li><a href="#">Trader</a></li>
+			<li><a href="#">Broker</a></li>
+		<ul>
+	</div>
+	
+	<div class="copy_text">@2021 DishFish Labs All Rights Reserved | Design By : <a href="#">DishFish Labs</a></div>
+</div>
+</footer>
+<script src="js/sweetalert.js"></script>
+<script>
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+} 
+</script>
+{% if success.length > 0 %}
+<script>
+	swal("Success", "{{success}}", "success");
+</script>
+{% endif %}
+{% if error.length > 0 %}
+<script>
+	swal("Opps !", "{{error}}", "error");
+</script>
+{% endif %}
+</body>
+</html>

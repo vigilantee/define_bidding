@@ -1,0 +1,54 @@
+{% extends "backend/partials/layout.njk" %}
+{% block content %}
+<div class="main-content">
+    <section class="section">
+        <div class="section-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card"> 
+                        <div class="card-header">
+                            <h4>Broker Table</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-hover" id="tableExport" style="width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <th>Registration Type</th>
+                                            <th>Name</th>
+                                            <th>Address</th>
+                                            <th>Contact</th>
+                                            <th>Email</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for bl in broker_list %}
+                                        <tr>
+                                            {% if (bl.registration_status == 1) %}
+                                            <td>Individual</td>
+                                            {% elif (bl.registration_status == 2) %}
+                                            <td>Proprietorship</td>
+                                            {% elif (bl.registration_status == 3) %}
+                                            <td>Partnership</td>
+                                            {% endif %}
+                                            <td>{{bl.name_firm_name}}</td>
+                                            <td>{{bl.broker_full_address}}</td>
+                                            <td>{{bl.broker_contact_no}}</td>
+                                            <td>{{bl.broker_email_id}}</td>
+                                            <td>{{'<a href="">Active</a>' if bl.broker_status else '<a href="">Deactive</a>'}}</td>
+                                            <td><a href="{{config.baseUrl}}backend/delete-broker/{{bl.id}}" onclick="return confirm('Are you sure? You want to delete')" class="btn btn-danger"><i class="fa fa-trash"></i>&nbsp;Delete</a></td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
