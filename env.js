@@ -1,8 +1,8 @@
 var envJson =
 {
     "localhost": {
-        "PORT": "456",
-        "baseUrl": "http://localhost:456/",
+        "PORT": "4000",
+        "baseUrl": "http://localhost:4000/",
         "siteName": "Define Softwares",
         "database": {
             "host": "sql6.freemysqlhosting.net",
